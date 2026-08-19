@@ -12,7 +12,7 @@ const Navbar = async () => {
       <div className='flex w-full justify-between'>
         <h1>valami gumis</h1>
         <div className='flex gap-2'>
-          {categories?.map(category => (
+          {categories?.filter(x => x.showInNavigation && x.parentId == null).map(category => (
             <Link key={category.uri} href={`/kategoriak/${category.uri}`}>{category.title}</Link>
           ))}
         </div>

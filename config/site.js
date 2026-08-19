@@ -7,9 +7,11 @@ export const siteConfig = {
         backgroundColor: "#FFFFFF"
     },
     company: {
-        title: "gumis faszsag",
+        title: "gumis cucc",
         phone: "+36208049550",
         email: "valami@kft.hu",
+        locationCity: "5600 Békéscsaba",
+        locationStreet: "Stromfeld Aurél utca 25.",
         logo: "/logo.png",
     }
 }

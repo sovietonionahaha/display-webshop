@@ -21,7 +21,7 @@ export default async function layout({ children }) {
                 <h1>Adminisztráció</h1>
                 <div className="flex flex-col gap-2">
                     {links?.map(link => (
-                        <Link href={link.href}>{link.title}</Link>
+                        <Link key={link.href} href={link.href}>{link.title}</Link>
                     ))}
                 </div>
             </aside>

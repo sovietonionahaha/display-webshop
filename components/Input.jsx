@@ -7,12 +7,14 @@ const Input = ({
     defaultValue,
     type,
     name,
-    className
+    className,
+    value,
 }) => {
     return (
         <input
             name={name}
             type={type}
+            {...(value !== null && { value })}
             placeholder={placeholder}
             className={clsx(className, "input w-full")}
             onChange={(e) => onChange(e)}

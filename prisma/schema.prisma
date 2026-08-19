@@ -21,22 +21,17 @@ model User {
 model Category {
   id    String @id @default(cuid())
   title String
-  uri   String
+  uri   String @unique
+  showInNavigation Boolean @default(false)
 
+  parentId String?
+  parent   Category? @relation("CategoryChildren", fields: [parentId], references: [id])
+
+  children Category[] @relation("CategoryChildren")
   products Product[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-}
-
-model Group {
-  id    String @id @default(cuid())
-  title String
-  uri   String
-
-  products  Product[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @default(now()) @updatedAt
 }
 
 model Product {
@@ -46,11 +41,10 @@ model Product {
   price       Int        @default(0)
   description String?
   inStock     Int?
+  discountPercent Int @default(0) 
   condition   Condition? @default(NEW)
   categoryId  String?
-  category    Category?  @relation(fields: [categoryId], references: [id])
-  group       Group?     @relation(fields: [groupId], references: [id])
-  groupId     String?
+  category    Category?  @relation(fields: [categoryId], references: [id], onDelete: SetNull)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

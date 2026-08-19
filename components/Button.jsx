@@ -10,12 +10,13 @@ const Button = ({
     className,
     disabled,
     rounded = true,
+    isDelete = false
 }) => {
     return (
-        <button onClick={onSubmit} disabled={disabled} className={clsx(className, rounded && "rounded-lg", "p-2 cursor-pointer", primary && "bg-(--color-primary) text-white")}>
+        <button onClick={onSubmit} disabled={disabled} className={clsx(className, rounded && "rounded-lg", "p-2 cursor-pointer", (primary && !isDelete) && "bg-(--color-primary) text-white", isDelete && "bg-transparent text-red-500")}>
             {children}
         </button>
-  )
+    )
 }
 
 export default Button

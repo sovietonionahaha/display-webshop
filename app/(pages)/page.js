@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import getCategories from "@/lib/api/public/category/getCategories";
 import ListCategories from "../../components/ListCategories";
 import ListProducts from "@/components/ListProducts";
+import Footer from "@/components/Footer";
 
 export default async function Home() {
 
@@ -9,15 +10,16 @@ export default async function Home() {
     return (
         <>
             <Navbar />
-            <div className="w-full max-w-4/6 mx-auto flex flex-col mt-[64px]">
+            <div className="w-full max-w-4/6 mx-auto flex-1 flex-col mt-[64px]">
                 <div className="flex flex-col w-full gap-2">
                     <h1 className="text-2xl font-medium">Kategóriák</h1>
                     <ListCategories/>
                 </div>
-                <div className="flex flex-col w-full mt-4 bg-(--color-secondary) h-[320px]">
+                <div className="flex flex-col w-full mt-4 bg-(--color-secondary)">
                     <ListProducts/>
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }

@@ -35,7 +35,7 @@ export function ModalProvider({ children }) {
 
             {modal.open && (
                 <div onClick={closeModal} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                    <div onClick={(e) => e.stopPropagation()} className="bg-white p-6 rounded-xl min-w-[300px]">
+                    <div onClick={(e) => e.stopPropagation()} className="bg-white py-6 px-12 rounded-xl min-w-[300px]">
                         {modal.content}
                     </div>
                 </div>
