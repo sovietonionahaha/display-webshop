@@ -6,17 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "push": "npx prisma generate & npx prisma db push & npm run dev",
     "lint": "eslint"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.1",
+    "bcrypt": "^6.0.0",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.4.2",
+    "jsonwebtoken": "^9.0.3",
     "next": "16.3.0",
+    "pg": "^8.23.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-countup": "^6.5.3",
+    "react-dom": "19.2.8",
+    "react-icons": "^5.7.0",
+    "react-toastify": "^11.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/pg": "^8.21.0",
+    "daisyui": "^5.7.17",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
-    "tailwindcss": "^4"
+    "prisma": "^7.9.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.12"
   }
 }

@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+}
+
+model Category {
+  id    String @id @default(cuid())
+  title String
+  uri   String
+
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Group {
+  id    String @id @default(cuid())
+  title String
+  uri   String
+
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+}
+
+model Product {
+  id          String     @id @default(cuid())
+  enabled     Boolean    @default(true)
+  title       String
+  price       Int        @default(0)
+  description String?
+  inStock     Int?
+  condition   Condition? @default(NEW)
+  categoryId  String?
+  category    Category?  @relation(fields: [categoryId], references: [id])
+  group       Group?     @relation(fields: [groupId], references: [id])
+  groupId     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+enum Condition {
+  NEW
+  USED
+  NOVEL
+}
