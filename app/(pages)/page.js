@@ -11,11 +11,11 @@ export default async function Home() {
         <>
             <Navbar />
             <div className="w-full max-w-4/6 mx-auto flex-1 flex-col mt-[64px]">
-                <div className="flex flex-col w-full gap-2">
-                    <h1 className="text-2xl font-medium">Kategóriák</h1>
+                <div className="flex flex-col w-full gap-8">
+                    <h1 className="text-2xl font-medium">Termékek</h1>
                     <ListCategories/>
                 </div>
-                <div className="flex flex-col w-full mt-4 bg-(--color-secondary)">
+                <div className="flex flex-col w-full mt-4">
                     <ListProducts/>
                 </div>
             </div>

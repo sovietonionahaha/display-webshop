@@ -3,6 +3,7 @@
 import { signIn } from '@/app/actions/auth'
 import Button from '@/components/Button'
 import Input from '@/components/Input'
+import { redirect } from 'next/navigation'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -22,6 +23,7 @@ const page = () => {
         const result = await signIn(credentails)
         if (result.success) {
             toast.success(result.message)
+            redirect("/admin")
         }else {
             toast.error(result.message)
         }

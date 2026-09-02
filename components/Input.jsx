@@ -9,14 +9,34 @@ const Input = ({
     name,
     className,
     value,
+    textarea = false,
+    label = false,
 }) => {
+    const Component = textarea ? "textarea" : "input"
+
+    if (label) return (
+        <label className={clsx(textarea ? "textarea" : "input", "w-full")}>
+            <span className='text-gray-500'>{placeholder}</span>
+            <Component
+                name={name}
+                type={type}
+                {...(value !== null && { value })}
+                placeholder={placeholder}
+                {...(defaultValue !== null && { defaultValue })}
+                className={clsx(className, "grow w-full")}
+                onChange={(e) => onChange(e)}
+            />
+        </label>
+    )
+
     return (
-        <input
+        <Component
             name={name}
             type={type}
             {...(value !== null && { value })}
             placeholder={placeholder}
-            className={clsx(className, "input w-full")}
+            {...(defaultValue !== null && { defaultValue })}
+            className={clsx(className, textarea ? "textarea" : "input", "w-full")}
             onChange={(e) => onChange(e)}
         />
     )

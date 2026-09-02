@@ -8,7 +8,7 @@ const Navbar = async () => {
   const categories = await getCategories()
 
   return (
-    <div className='p-4 sticky top-0 flex w-full bg-(--color-third) text-white'>
+    <div className='p-4 sticky top-0 flex w-full bg-(--color-third) text-white z-50'>
       <div className='flex w-full justify-between'>
         <h1>valami gumis</h1>
         <div className='flex gap-2'>

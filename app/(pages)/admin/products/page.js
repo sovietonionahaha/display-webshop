@@ -13,7 +13,7 @@ const page = async () => {
         <div className="w-full flex flex-col p-4">
             <CategoriesSection categories={categories} />
 
-            <ProductsSection products={products} />
+            <ProductsSection products={products} categories={categories}/>
         </div>
     )
 }

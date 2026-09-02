@@ -1,4 +1,7 @@
+"use client"
+
 import clsx from 'clsx'
+import Link from 'next/link'
 import React from 'react'
 
 const Button = ({
@@ -10,12 +13,15 @@ const Button = ({
     className,
     disabled,
     rounded = true,
-    isDelete = false
+    isDelete = false,
+    href = null
 }) => {
+    const Component = href ? Link : "button"
+
     return (
-        <button onClick={onSubmit} disabled={disabled} className={clsx(className, rounded && "rounded-lg", "p-2 cursor-pointer", (primary && !isDelete) && "bg-(--color-primary) text-white", isDelete && "bg-transparent text-red-500")}>
+        <Component {...(href && { href })} onClick={onSubmit} disabled={disabled} className={clsx(className, rounded && "rounded-lg", "p-2 cursor-pointer", (primary && !isDelete) && "bg-(--color-primary) text-white", isDelete && "bg-transparent text-red-500")}>
             {children}
-        </button>
+        </Component>
     )
 }
 

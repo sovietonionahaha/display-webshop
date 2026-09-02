@@ -17,11 +17,13 @@ export default async function layout({ children }) {
 
     return (
         <div className="min-h-screen lg:flex">
-            <aside className="flex flex-col min-h-screen w-fit p-4 bg-(--color-secondary)">
-                <h1>Adminisztráció</h1>
-                <div className="flex flex-col gap-2">
+            <aside className="flex flex-col min-h-screen w-fit border-r border-(--color-secondary)/50 bg-(--color-secondary)/10">
+                <div className="w-full bg-(--color-secondary) p-4">
+                    <h1 className="font-medium">Business Mix Kft.</h1>
+                </div>
+                <div className="flex flex-col gap-2 p-4">
                     {links?.map(link => (
-                        <Link key={link.href} href={link.href}>{link.title}</Link>
+                        <Link key={link.href} href={`/admin/${link.href}`}>{link.title}</Link>
                     ))}
                 </div>
             </aside>

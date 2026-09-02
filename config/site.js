@@ -8,7 +8,7 @@ export const siteConfig = {
     },
     company: {
         title: "gumis cucc",
-        phone: "+36208049550",
+        phone: "+36/70-422-4626",
         email: "valami@kft.hu",
         locationCity: "5600 Békéscsaba",
         locationStreet: "Stromfeld Aurél utca 25.",
