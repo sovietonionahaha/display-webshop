@@ -10,9 +10,8 @@ export default async function Home() {
     return (
         <>
             <Navbar />
-            <div className="w-full max-w-4/6 mx-auto flex-1 flex-col mt-[64px]">
+            <div className="w-full max-w-11/12 lg:max-w-4/6 mx-auto flex-1 flex-col mt-[64px]">
                 <div className="flex flex-col w-full gap-8">
-                    <h1 className="text-2xl font-medium">Termékek</h1>
                     <ListCategories/>
                 </div>
                 <div className="flex flex-col w-full mt-4">

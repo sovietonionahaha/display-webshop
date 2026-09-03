@@ -10,7 +10,7 @@ const Navbar = async () => {
   return (
     <div className='p-4 sticky top-0 flex w-full bg-(--color-third) text-white z-50'>
       <div className='flex w-full justify-between'>
-        <h1>valami gumis</h1>
+        <h1>Business Mix</h1>
         <div className='flex gap-2'>
           {categories?.filter(x => x.showInNavigation && x.parentId == null).map(category => (
             <Link key={category.uri} href={`/kategoriak/${category.uri}`}>{category.title}</Link>

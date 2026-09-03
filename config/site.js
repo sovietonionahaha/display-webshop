@@ -7,7 +7,7 @@ export const siteConfig = {
         backgroundColor: "#FFFFFF"
     },
     company: {
-        title: "gumis cucc",
+        title: "Business Mix",
         phone: "+36/70-422-4626",
         email: "valami@kft.hu",
         locationCity: "5600 Békéscsaba",

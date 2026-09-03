@@ -14,11 +14,11 @@ const ListProducts = async ({ excludeId }) => {
     )
 
     return (
-        <div className='grid max-lg:grid-cols-2 grid-cols-4 w-full gap-3 h-[320px]'>
+        <div className='grid max-lg:grid-cols-2 grid-cols-4 w-full gap-3 h-[500px] lg:h-[320px]'>
             {products.filter(x => x.id !== excludeId)?.map(product => (
                 <Link href={`/termek/${product.id}`} key={product.title} className='w-full h-full flex flex-col bg-(--color-secondary)/30 cursor-pointer'>
                     {product?.images[0]?.path ? (
-                        <Image src={`https://cdn.sovietprojects.hu/get/business/${product.images[0]?.path}`} width={300} height={300} alt="" className='w-full object-cover h-3/4' />
+                        <Image src={`https://cdn.sovietprojects.hu/get/business/${product.images[0]?.path}`} width={300} height={300} alt={product.title} className='w-full object-cover h-3/4' />
                     ) : (
                         <div className='w-full h-3/4 flex items-center justify-center text-black/30 bg-white'>
                             <MdOutlineImageNotSupported size={50} />

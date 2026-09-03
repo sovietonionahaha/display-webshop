@@ -30,7 +30,7 @@ const ProductDetails = ({ product: initial, categories }) => {
                     <span onClick={() => fileInputRef.current?.click()} className='border border-black/20 text-black/40 py-1 px-2 text-sm w-fit rounded-sm cursor-pointer'>
                         Feltöltés
                     </span>
-                    <div className='grid grid-cols-8 gap-2 pb-2 my-4'>
+                    <div className='grid grid-cols-4 lg:grid-cols-8 gap-2 pb-2 my-4'>
                         {product.images.map((file, index) => (
                             <span key={file.name || file.path} className='relative'>
                                 <img src={file?.id ? `https://cdn.sovietprojects.hu/get/business/${file.path}` : URL.createObjectURL(file)} alt="File" className='w-full h-full rounded-sm object-contain' />

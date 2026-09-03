@@ -10,20 +10,24 @@ export function ModalProvider({ children }) {
         open: false,
         content: null,
         transparent: false,
+        fullWidthOnMobile: false
     })
 
-    const openModal = (content, transparent = false) => {
+    const openModal = (content, transparent = false, fullWidthOnMobile = false) => {
         setModal({
             open: true,
             content,
-            transparent
+            transparent,
+            fullWidthOnMobile
         })
     }
 
     const closeModal = () => {
         setModal({
             open: false,
-            content: null
+            content: null,
+            transparent: false,
+            fullWidthOnMobile: false
         })
     }
 
@@ -41,6 +45,18 @@ export function ModalProvider({ children }) {
         }
     }, [modal])
 
+    useEffect(() => {
+        if (modal.open) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = ""
+        }
+
+        return () => {
+            document.body.style.overflow = ""
+        }
+    }, [modal.open])
+
     return (
         <ModalContext.Provider
             value={{
@@ -52,7 +68,7 @@ export function ModalProvider({ children }) {
 
             {modal.open && (
                 <div onClick={closeModal} className={clsx("fixed inset-0 z-50 flex items-center justify-center", modal.transparent ? "bg-black/80" : "bg-black/50")}>
-                    <div onClick={(e) => e.stopPropagation()} className={clsx("py-6 px-12 rounded-xl min-w-[300px]", modal.transparent ? "" : "bg-white")}>
+                    <div onClick={(e) => e.stopPropagation()} className={clsx("rounded-xl min-w-[300px]", modal.transparent ? "" : "bg-white", modal.fullWidthOnMobile ? "w-full" : "px-12 py-6", modal.fullWidthOnMobile && "h-full")}>
                         {modal.content}
                     </div>
                 </div>

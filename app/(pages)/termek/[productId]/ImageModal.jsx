@@ -1,13 +1,17 @@
 "use client"
 
+import { useModal } from "@/components/modal/ModalProvider"
 import clsx from "clsx"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { IoMdCloseCircle } from "react-icons/io"
 import { MdOutlineArrowBackIos, MdOutlineArrowForwardIos } from "react-icons/md"
 
 const ImageModal = ({ images }) => {
 
     const [selected, setSelected] = useState(0)
+
+    const { closeModal } = useModal()
 
     const goBack = () => {
         setSelected(prev => prev == 0 ? images.length - 1 : prev - 1)
@@ -32,13 +36,14 @@ const ImageModal = ({ images }) => {
 
     return (
         <div className={clsx("w-full flex items-center justify-center relative h-screen bg-black rounded-sm select-none overflow-hidden")}>
+            <IoMdCloseCircle size={25} className="absolute top-1 right-1 z-70 text-gray-100 cursor-pointer" onClick={closeModal}/>
             <Image src={`https://cdn.sovietprojects.hu/get/business/${images[selected]?.path}`} width={200} height={200} className="z-10 blur-xl scale-120 object-cover absolute w-full h-full" />
             <MdOutlineArrowBackIos onClick={goBack} size={45} className="z-12 absolute left-1.5 text-black ring-transparent ring rounded-full p-3 bg-gray-200 cursor-pointer" />
             <Image className="w-full h-full object-contain rounded-sm z-11" src={`https://cdn.sovietprojects.hu/get/business/${images[selected]?.path}`} width={1000} height={1000} alt="Termék kép" />
             <MdOutlineArrowForwardIos onClick={goForward} size={45} className="z-12 absolute right-1.5 text-black ring-transparent ring rounded-full p-3 bg-gray-200 cursor-pointer" />
             <div className="absolute bottom-2 z-13 flex gap-2">
                 {images.map((image, index) => (
-                    <Image onClick={() => setSelected(index)} src={`https://cdn.sovietprojects.hu/get/business/${image.path}`} className={clsx("w-12 h-12 aspect-square object-cover cursor-pointer rounded-sm", index !== selected && "opacity-50")} width={75} height={75} />
+                    <Image key={image.path} onClick={() => setSelected(index)} src={`https://cdn.sovietprojects.hu/get/business/${image.path}`} className={clsx("w-12 h-12 aspect-square object-cover cursor-pointer rounded-sm", index !== selected && "opacity-50")} width={75} height={75} />
                 ))}
             </div>
         </div>

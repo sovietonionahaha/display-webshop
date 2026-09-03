@@ -7,8 +7,10 @@ import { ToastContainer } from "react-toastify";
 import { ModalProvider } from "@/components/modal/ModalProvider";
 
 export const metadata = {
-  title: siteConfig.company.title,
-  description: "",
+  title: {
+    template: '%s | Business Mix',
+    default: "Business Mix"
+  },
 }
 
 const inter = Inter({
